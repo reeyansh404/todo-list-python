@@ -7,26 +7,31 @@ def add_task():
     
 def view_task():
     list_num = 1
+    
+    if task == []:
+        print("\nThere are no task to be completed.")
+        
     for item in task:
         print("\nThings to do: ")
         print(f"{list_num}. {item}")
         list_num+=1
-    else:
-        print("\nThere are no task to be completed.")
+    
         
 def delete_task():
-    view_task()
-    del_task = int(input("\nEnter the task you want to delete in number: "))
-    del_task -=1 #trying to fit the index
-    
-    try:
-        index = del_task
-        del_items = task.pop(index)
-        print(f"The item you selected {del_task+1} is now deleted.")
-    except ValueError:
-        print("Invalid input! Please enter a valid integer") #not fixed yet 
-    except IndexError:
-        print("Value not on the list!")
+    if task == []:
+        print("\nThere are no task to delete.")
+    else:
+        del_task = int(input("\nEnter the task you want to delete in number: "))
+        del_task -=1 
+            
+        try:
+            index = del_task
+            del_items = task.pop(index)
+            print(f"\nThe item you selected {del_task+1} is now deleted.")
+        except ValueError:
+            print("Invalid input! Please enter a valid integer") #not fixed yet 
+        except IndexError:
+            print("Value not on the list!")
     
 
 while True:
