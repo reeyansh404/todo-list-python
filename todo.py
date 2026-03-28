@@ -1,25 +1,22 @@
-task = []
+tasks = []
 
 def add_task():
     task_input = input("\nEnter the task: ")
-    task.append(task_input)
+    tasks.append(task_input)
     print("\nYour task has been added!")
     
 def view_task():
-    list_num = 1
-    
-    if task == []:
+    if tasks == []:
         print("\nThere are no task to be completed.")
     else: 
         print("\nThings to do: ")
-        
-    for item in task:
-        print(f"{list_num}. {item}")
-        list_num+=1
+        for i,task in enumerate(tasks,1):
+            print(f"{i}. {task}")
+
     
         
 def delete_task():
-    if task == []:
+    if tasks == []:
         print("\nThere are no task to delete.")
     else:     
         try:
@@ -29,7 +26,7 @@ def delete_task():
             else:
                 del_task -=1
                 index = del_task
-                del_items = task.pop(index)
+                del_items = tasks.pop(index)
                 print(f"\nThe item you selected {del_task+1} is now deleted.")
                 
         except ValueError:
@@ -55,7 +52,7 @@ while True:
     elif user_input == "3":
         delete_task()
     elif user_input == "4":
-        print("See you again!")
+        print("\nSee you again!")
         break
     else:
         print("Invalid input. Try again!")
